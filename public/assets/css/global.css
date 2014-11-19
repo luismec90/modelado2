@@ -187,6 +187,7 @@ button.toast-close-button {
     background-size: 200px 200px;
     background-image: url(http://placehold.it/200x200);
 }
+
 .btn-file input[type=file] {
     position: absolute;
     top: 0;
