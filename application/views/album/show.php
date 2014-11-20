@@ -74,6 +74,11 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="public" vaue="1"> Hacer foto pùblica
+                            </label>
+                        </div>
                         <div class="form-group">
                             <label>Titulo:</label>
                             <input type="text"  name="title" class="form-control">

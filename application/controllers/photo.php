@@ -7,7 +7,7 @@ class Photo extends CI_Controller
     {
         parent::__construct();
         session_start();
-         $this->estoyLogueado();
+        $this->estoyLogueado();
         $this->load->model('photo_model');
 
     }
@@ -19,10 +19,16 @@ class Photo extends CI_Controller
         $title = $this->input->post('title');
         $description = $this->input->post('description');
 
+        if ($this->input->post('public'))
+            $public = 1;
+        else
+            $public = 0;
+
 
         $data = ['album_id' => $album_id,
             'title' => $title,
-            'description' => $description];
+            'description' => $description,
+            'public' => $public];
 
         $this->photo_model->create($data);
 

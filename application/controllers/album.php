@@ -75,7 +75,7 @@ class Album extends CI_Controller
         $data["albumes"] = $this->album_model->read(['user_id' => $user_id]);
 
         foreach ($data["albumes"] as $album) {
-            $album->photos = $this->photo_model->read(['album_id' => $album->id]);
+            $album->photos = $this->photo_model->read(['album_id' => $album->id,'public'=>1]);
         }
 
         $this->load->view('layouts/header', $data);
@@ -89,7 +89,7 @@ class Album extends CI_Controller
     {
         $data["album"] = $this->album_model->read(['id' => $album_id]);
 
-        $data["album"][0]->photos = $this->photo_model->read(['album_id' => $data["album"][0]->id]);
+        $data["album"][0]->photos = $this->photo_model->read(['album_id' => $data["album"][0]->id,'public'=>1]);
 
         $this->load->view('layouts/header', $data);
         $this->load->view('album/show');
