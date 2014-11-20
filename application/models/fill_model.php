@@ -28,16 +28,16 @@ class Fill_model extends CI_Model
             'id' => 1,
             'first_name' => 'Luis Fernando',
             'last_name' => 'Montoya Gómez',
-            'email' => 'estudiante1',
+            'email' => 'luismec90@gmail.com',
             'password' => sha1("123"),
         );
         $this->db->insert('user', $data);
 
         $data = array(
-            'id' => 5,
+            'id' => 2,
             'first_name' => 'Juan Camilo',
             'last_name' => 'Monsalve Ramírez',
-            'email' => 'monitor1',
+            'email' => 'juan@gmail.com',
             'password' => sha1("123"),
 
         );
@@ -67,6 +67,20 @@ class Fill_model extends CI_Model
             'id' => 3,
             'user_id' => 1,
             'name' => 'Álbum 3'
+        );
+        $this->db->insert('album', $data);
+
+        $data = array(
+            'id' => 4,
+            'user_id' => 2,
+            'name' => 'Álbum 1'
+        );
+        $this->db->insert('album', $data);
+
+        $data = array(
+            'id' => 5,
+            'user_id' => 2,
+            'name' => 'Álbum 2'
         );
         $this->db->insert('album', $data);
     }
@@ -133,6 +147,24 @@ class Fill_model extends CI_Model
             'id' => 7,
             'album_id' => 1,
             'location' => 'public/uploads/1/1/7.jpg',
+            'title' => 'Un título cualquiera...',
+            'description' => 'Una descripción cualquiera...',
+        );
+        $this->db->insert('photo', $data);
+
+        $data = array(
+            'id' => 8,
+            'album_id' => 4,
+            'location' => 'public/uploads/2/4/8.jpg',
+            'title' => 'Un título cualquiera...',
+            'description' => 'Una descripción cualquiera...',
+        );
+        $this->db->insert('photo', $data);
+
+        $data = array(
+            'id' => 9,
+            'album_id' => 4,
+            'location' => 'public/uploads/2/4/9.jpg',
             'title' => 'Un título cualquiera...',
             'description' => 'Una descripción cualquiera...',
         );

@@ -7,8 +7,7 @@ class Album extends CI_Controller
     {
         parent::__construct();
         session_start();
-        // $this->estoyLogueado();
-        $_SESSION["idUsuario"] = 1;
+        $this->estoyLogueado();
         $this->load->model('album_model');
         $this->load->model('photo_model');
 
@@ -70,5 +69,34 @@ class Album extends CI_Controller
 
         $this->mensaje("Álbum eliminado exitosamente", "success", "album");
     }
+
+    public function showAlbums($user_id)
+    {
+        $data["albumes"] = $this->album_model->read(['user_id' => $user_id]);
+
+        foreach ($data["albumes"] as $album) {
+            $album->photos = $this->photo_model->read(['album_id' => $album->id]);
+        }
+
+        $this->load->view('layouts/header', $data);
+        $this->load->view('album/index');
+        $this->load->view('layouts/footer');
+
+
+    }
+
+    public function showAlbum($user_id,$album_id)
+    {
+        $data["album"] = $this->album_model->read(['id' => $album_id]);
+
+        $data["album"][0]->photos = $this->photo_model->read(['album_id' => $data["album"][0]->id]);
+
+        $this->load->view('layouts/header', $data);
+        $this->load->view('album/show');
+        $this->load->view('layouts/footer');
+
+
+    }
+
 }
 

@@ -58,6 +58,14 @@ class CI_Controller
         return self::$instance;
     }
 
+    static function estoyLogueado() {
+
+        if (!isset($_SESSION["idUsuario"])) {
+            header("Location:" . base_url()."entrar");
+            exit();
+        }
+    }
+
     protected function mensaje($mensaje, $tipo, $redirect = "")
     {
         $this->session->set_flashdata('mensaje', $mensaje);

@@ -10,9 +10,11 @@
         <div class="col-lg-4">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <?= $album->name ?> <span data-album-id="<?= $album->id ?>"
+                    <?= $album->name ?>
+                    <?php if($_SESSION["idUsuario"]==$album->user_id) {?><span data-album-id="<?= $album->id ?>"
                                               class="btn-eliminar-album glyphicon glyphicon-trash pull-right"
                                               aria-hidden="true" href="#"></span>
+                    <?php } ?>
                 </div>
                 <div class="panel-body">
                     <?php foreach ($album->photos as $photo) { ?>
@@ -26,7 +28,11 @@
                 </div>
                 <div class="panel-footer">
                     Total fotos: <?= sizeof($album->photos) ?>
-                    <a class="pull-right" href="<?= base_url() . "album/show/$album->id" ?>">Ver álbum</a>
+                    <?php if($_SESSION["idUsuario"]==$album->user_id) {?>
+                         <a class="pull-right" href="<?= base_url() . "album/show/$album->id" ?>">Ver álbum</a>
+                    <?php }else{ ?>
+                        <a class="pull-right" href="<?= base_url() . "users/{$album->user_id}/album/$album->id" ?>">Ver álbum</a>
+                    <?php } ?>
                 </div>
             </div>
         </div>

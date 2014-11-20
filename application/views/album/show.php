@@ -1,6 +1,22 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Álbum: <?= $album[0]->name ?> <button id="btn-subir-imagen" class="btn btn-primary pull-right"> Subir imagen</button></h1>
+        <?php if($_SESSION["idUsuario"]==$album[0]->user_id) {?>
+        <h1 class="page-header">Álbum: <?= $album[0]->name ?>
+
+            <button id="btn-subir-imagen" class="btn btn-primary pull-right"> Subir imagen</button>
+
+        </h1>
+        <?php } else{?>
+
+        <h1 class="page-header">
+            <a id="btn-subir-imagen" href="<?= base_url() ?>users/<?= $album[0]->user_id ?>" class="btn btn-primary ">Ir atrás</a>
+            Álbum: <?= $album[0]->name ?>
+
+
+
+        </h1>
+        <?php }
+        ?>
     </div>
     <!-- /.col-lg-12 -->
 </div>

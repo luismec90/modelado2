@@ -7,8 +7,7 @@ class Photo extends CI_Controller
     {
         parent::__construct();
         session_start();
-        // $this->estoyLogueado();
-        $_SESSION["idUsuario"] = 1;
+         $this->estoyLogueado();
         $this->load->model('photo_model');
 
     }

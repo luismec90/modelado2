@@ -38,7 +38,12 @@
 |
 */
 
-$route['default_controller'] = "album/create";
+$route['default_controller'] = "album";
+$route['users'] = "user/index";
+$route['users/(:num)'] = "album/showAlbums/$1";
+$route['users/(:num)/album/(:num)'] = "album/showAlbum/$1/$2";
+$route['entrar'] = "user/login";
+
 $route['404_override'] = '';
 
 
